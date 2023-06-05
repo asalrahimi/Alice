@@ -10,10 +10,19 @@ public class Player : MonoBehaviour
     Rigidbody2D myRig;
     Animator myanim;
     public bool Ground;
+    AudioSource _AudioPlayer;
+    public AudioClip Sound_Singing;
+    public int maxHealth = 100;
+	  public int currentHealth;
+
+	public HealthBar healthBar;
     void Start()
     {
         myRig = GetComponent <Rigidbody2D> ();
         myanim = GetComponent <Animator> ();
+        _AudioPlayer = GetComponent <AudioSource> ();
+        currentHealth = maxHealth;
+		    healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -34,6 +43,11 @@ public class Player : MonoBehaviour
              myanim.SetBool("Run", true);
         }
 
+        if(Input.GetKey(KeyCode.S))
+        {
+           _AudioPlayer.PlayOneShot(Sound_Singing);//Alice Singing a Song
+        }
+
 
         //Enable the mode of standing
         if((!Input.GetKey(KeyCode.D)) && (!Input.GetKey(KeyCode.A)))
@@ -47,7 +61,10 @@ public class Player : MonoBehaviour
         {
           myRig.velocity = new Vector2(myRig.velocity.x, 3);
           myanim.Play("Jump");
+          TakeDamage(5);
         }
+
+        
 
 
        //Limit player jumps
@@ -68,6 +85,14 @@ public class Player : MonoBehaviour
       }
     }
     */
+
+
+    void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+
+		healthBar.SetHealth(currentHealth);
+	}
         
     }
 }
