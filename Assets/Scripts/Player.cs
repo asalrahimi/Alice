@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public AudioClip Sound_Singing;
     public int maxHealth = 100;
 	  public int currentHealth;
+    private Player player;
 
 	public HealthBar healthBar;
     void Start()
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
         _AudioPlayer = GetComponent <AudioSource> ();
         currentHealth = maxHealth;
 		    healthBar.SetMaxHealth(maxHealth);
+        player = FindObjectOfType<Player>();
+
     }
 
     // Update is called once per frame
@@ -64,12 +67,16 @@ public class Player : MonoBehaviour
           TakeDamage(5);
         }
 
-        
+        //GameOverCode
+        if(currentHealth==0)
+        {
+        player.gameObject.SetActive(false);
+        }
 
 
        //Limit player jumps
-       
-        /*void OnCollisionEnter2D(Collision2D tagsplayer)
+       /*
+        void OnCollisionEnter2D(Collision2D tagsplayer)
     {
       if (tagsplayer.gameObject.tag == "Ground")
       {
@@ -84,8 +91,8 @@ public class Player : MonoBehaviour
         Ground = false;
       }
     }
-    */
-
+    
+*/
 
     void TakeDamage(int damage)
 	{
