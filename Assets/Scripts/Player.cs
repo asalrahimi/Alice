@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         //Jumping the Player and Runing the animation of that
         if(Input.GetKeyDown(KeyCode.Space))
         {
-          myRig.velocity = new Vector2(myRig.velocity.x, 3);
+          myRig.velocity = new Vector2(myRig.velocity.x, 6);
           myanim.Play("Jump");
           TakeDamage(5);
         }
