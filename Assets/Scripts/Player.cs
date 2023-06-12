@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
 	  public int currentHealth;
     private Player player;
+    public float jumpforce=5;
+
 
     //magic
     
@@ -73,11 +75,11 @@ public class Player : MonoBehaviour
 
 
         //Jumping the Player and Runing the animation of that
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-          myRig.velocity = new Vector2(myRig.velocity.x, 6);
+        if(Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(myRig.velocity.y)<0.001f)
+        {            
+          myRig.AddForce(new Vector2(0,jumpforce),ForceMode2D.Impulse);
           myanim.Play("Jump");
-          TakeDamage(5);
+          //TakeDamage(5);
         }
         //shooting magic
         if(Right==true){
@@ -99,15 +101,7 @@ public class Player : MonoBehaviour
         }
 
 
-       //Limit player jumps
-       /*
-        void OnCollisionEnter2D(Collision2D tagsplayer)
-    {
-      if (tagsplayer.gameObject.tag == "Ground")
-      {
-        Ground = true;
-      }
-    }
+/*
 
     void OnCollisionExit2D(Collision2D tagsplayer)
     {
