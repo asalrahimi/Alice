@@ -16,6 +16,15 @@ public class Player : MonoBehaviour
 	  public int currentHealth;
     private Player player;
 
+    //magic
+    
+    public ProjectalBehavior projectalprefabs;
+     public ProjectalBehavior2 projectalprefabsRight;
+    public Transform launchOfset;
+
+    //Cahracter direction
+    bool Right,left=true;
+
 	public HealthBar healthBar;
     void Start()
     {
@@ -37,6 +46,8 @@ public class Player : MonoBehaviour
            transform.Translate(new Vector2(3* Time.deltaTime, 0)); //moving Player
            transform.localScale = new Vector3 (-0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
             myanim.SetBool("Run", true);
+            Right=true;
+            left=false;
         }
 
         if(Input.GetKey(KeyCode.A))
@@ -44,6 +55,8 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector2(-3* Time.deltaTime, 0)); //moving Player
             transform.localScale = new Vector3 (0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
              myanim.SetBool("Run", true);
+             Right=false;
+             left=true;
         }
 
         if(Input.GetKey(KeyCode.S))
@@ -66,6 +79,18 @@ public class Player : MonoBehaviour
           myanim.Play("Jump");
           TakeDamage(5);
         }
+        //shooting magic
+        if(Right==true){
+          if(Input.GetButtonDown("Fire1")){
+            Instantiate(projectalprefabsRight,position: launchOfset.position,rotation: transform.rotation);
+          }
+        }
+        if(left==true){
+          if(Input.GetButtonDown("Fire1")){
+            Instantiate(projectalprefabs,position: launchOfset.position,rotation: transform.rotation);
+          }
+        }
+        
 
         //GameOverCode
         if(currentHealth==0)
