@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - obstacle
+  - hero
+  - spawnPoint
   layers:
   - Default
   - TransparentFX
@@ -41,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Mushroom
+    uniqueID: 3542262211
+    locked: 0
+  - name: prefabs
+    uniqueID: 1364191383
+    locked: 0
+  - name: Trees
+    uniqueID: 1771585249
+    locked: 0
+  - name: Monkey
+    uniqueID: 3115956799
     locked: 0

@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         {
           myRig.velocity = new Vector2(myRig.velocity.x, 6);
           myanim.Play("Jump");
-          TakeDamage(5);
+          
         }
 
         //GameOverCode
@@ -93,13 +93,42 @@ public class Player : MonoBehaviour
     }
     
 */
-
-    void TakeDamage(int damage)
+    }
+ void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
 
 		healthBar.SetHealth(currentHealth);
 	}
-        
-    }
+
+    
+
+
+
+//collision
+private void OnCollisionEnter2D(Collision2D collision){
+  if(collision.transform.tag=="obstacle"){
+    Debug.Log("oops!");
+    TakeDamage(5);
+  }
 }
+
+
+    // void OnTriggerEnter(Collider other) {
+    //     if (other.CompareTag("obstacle")) {
+    //               Debug.Log("oops!");
+
+    //         TakeDamage(5);
+
+    //     }
+    // }
+        
+//     void OnCollisionEnter2D(Collision2D col){
+
+//          if(col.gameObject.CompareTag("obstacle")){
+//             Debug.Log("oops!");
+
+//     }
+// }
+    }
+    
