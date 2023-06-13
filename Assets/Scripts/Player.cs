@@ -15,6 +15,17 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
 	  public int currentHealth;
     private Player player;
+    public float jumpforce=5;
+
+
+    //magic
+    
+    public ProjectalBehavior projectalprefabs;
+     public ProjectalBehavior2 projectalprefabsRight;
+    public Transform launchOfset;
+
+    //Cahracter direction
+    bool Right,left=true;
 
 	public HealthBar healthBar;
     void Start()
@@ -37,6 +48,8 @@ public class Player : MonoBehaviour
            transform.Translate(new Vector2(3* Time.deltaTime, 0)); //moving Player
            transform.localScale = new Vector3 (-0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
             myanim.SetBool("Run", true);
+            Right=true;
+            left=false;
         }
 
         if(Input.GetKey(KeyCode.A))
@@ -44,6 +57,8 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector2(-3* Time.deltaTime, 0)); //moving Player
             transform.localScale = new Vector3 (0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
              myanim.SetBool("Run", true);
+             Right=false;
+             left=true;
         }
 
         if(Input.GetKey(KeyCode.S))
@@ -60,12 +75,24 @@ public class Player : MonoBehaviour
 
 
         //Jumping the Player and Runing the animation of that
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-          myRig.velocity = new Vector2(myRig.velocity.x, 6);
+        if(Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(myRig.velocity.y)<0.001f)
+        {            
+          myRig.AddForce(new Vector2(0,jumpforce),ForceMode2D.Impulse);
           myanim.Play("Jump");
-          TakeDamage(5);
+          //TakeDamage(5);
         }
+        //shooting magic
+        if(Right==true){
+          if(Input.GetButtonDown("Fire1")){
+            Instantiate(projectalprefabsRight,position: launchOfset.position,rotation: transform.rotation);
+          }
+        }
+        if(left==true){
+          if(Input.GetButtonDown("Fire1")){
+            Instantiate(projectalprefabs,position: launchOfset.position,rotation: transform.rotation);
+          }
+        }
+        
 
         //GameOverCode
         if(currentHealth==0)
@@ -74,15 +101,7 @@ public class Player : MonoBehaviour
         }
 
 
-       //Limit player jumps
-       /*
-        void OnCollisionEnter2D(Collision2D tagsplayer)
-    {
-      if (tagsplayer.gameObject.tag == "Ground")
-      {
-        Ground = true;
-      }
-    }
+/*
 
     void OnCollisionExit2D(Collision2D tagsplayer)
     {
