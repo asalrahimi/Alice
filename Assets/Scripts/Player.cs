@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     AudioSource _AudioPlayer;
     public AudioClip Sound_Singing;
     public int maxHealth = 100;
-	  public int currentHealth;
+	public int currentHealth;
     private Player player;
     public float jumpforce=5;
 
@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
     //Cahracter direction
     bool Right,left=true;
+    public AudioClip Sound_jump;
+    
 
 	public HealthBar healthBar;
     void Start()
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
         myanim = GetComponent <Animator> ();
         _AudioPlayer = GetComponent <AudioSource> ();
         currentHealth = maxHealth;
-		    healthBar.SetMaxHealth(maxHealth);
+		healthBar.SetMaxHealth(maxHealth);
         player = FindObjectOfType<Player>();
 
     }
@@ -48,8 +50,7 @@ public class Player : MonoBehaviour
            transform.Translate(new Vector2(3* Time.deltaTime, 0)); //moving Player
            transform.localScale = new Vector3 (-0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
             myanim.SetBool("Run", true);
-            Right=true;
-            left=false;
+            
         }
 
         if(Input.GetKey(KeyCode.A))
@@ -57,8 +58,7 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector2(-3* Time.deltaTime, 0)); //moving Player
             transform.localScale = new Vector3 (0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
              myanim.SetBool("Run", true);
-             Right=false;
-             left=true;
+            
         }
 
         if(Input.GetKey(KeyCode.S))
@@ -79,6 +79,8 @@ public class Player : MonoBehaviour
         {            
           myRig.AddForce(new Vector2(0,jumpforce),ForceMode2D.Impulse);
           myanim.Play("Jump");
+          _AudioPlayer.PlayOneShot(Sound_jump);
+
           //TakeDamage(5);
         }
         //shooting magic
@@ -101,17 +103,6 @@ public class Player : MonoBehaviour
         }
 
 
-/*
-
-    void OnCollisionExit2D(Collision2D tagsplayer)
-    {
-      if (tagsplayer.gameObject.tag == "Ground")
-      {
-        Ground = false;
-      }
-    }
-    
-*/
 
     void TakeDamage(int damage)
 	{
