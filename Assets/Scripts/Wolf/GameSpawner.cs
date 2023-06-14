@@ -11,20 +11,14 @@ int randomEnemy;
 
 
 
-///
-// Vector2 whereToSpawn;
-// float nextSpawn=0.0f;
-// float spawnRate=2f;
-// float randx;
-// public GameObject enemy;
-
-
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        InvokeRepeating("SpawnEnemy",0f,5f);
+
+     InvokeRepeating("SpawnEnemy",0f,10f);
+       
     }
 
     // Update is called once per frame
@@ -40,12 +34,6 @@ int randomEnemy;
         Instantiate(enemysPrefabs[randomEnemy],spawnPoints[randomSpawnPoint].position,Quaternion.identity);
 
 
-        ///
-        // if(Time.time>nextSpawn){
-        //     nextSpawn=Time.time+spawnRate;
-        //     randx=Random.Range(-8.4f,8.4f);
-        //     whereToSpawn=new Vector2(randx,transform.position.y);
-        //     Instantiate(enemy,whereToSpawn,Quaternion.identity);
-        // }
-    }
+       
+}
 }
