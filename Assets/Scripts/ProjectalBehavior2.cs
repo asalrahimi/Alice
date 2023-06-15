@@ -16,7 +16,7 @@ public class ProjectalBehavior2 : MonoBehaviour
     void Update()
     {
             transform.position+=transform.right*Time.deltaTime*speed;
-            Destroy(gameObject,5.0f);
+            Destroy(gameObject,1.0f);
 
     }
 }

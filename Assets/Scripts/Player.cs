@@ -60,6 +60,9 @@ enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
            transform.Translate(new Vector2(3* Time.deltaTime, 0)); //moving Player
            transform.localScale = new Vector3 (-0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
             myanim.SetBool("Run", true);
+            //character direction 
+            Right=true;
+            left=false;
             
         }
 
@@ -68,6 +71,9 @@ enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
             transform.Translate(new Vector2(-3* Time.deltaTime, 0)); //moving Player
             transform.localScale = new Vector3 (0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
              myanim.SetBool("Run", true);
+            //character direction 
+            Right=false;
+            left=true;
             
         }
 
