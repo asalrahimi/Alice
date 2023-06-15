@@ -30,6 +30,12 @@ public class Player : MonoBehaviour
     
 
 	public HealthBar healthBar;
+
+
+  //wolf start
+  EnemyController enemyController;
+
+
     void Start()
     {
         myRig = GetComponent <Rigidbody2D> ();
@@ -38,6 +44,10 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
         player = FindObjectOfType<Player>();
+
+          //wolf start
+enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
+
 
     }
 
@@ -101,7 +111,7 @@ public class Player : MonoBehaviour
         {
         player.gameObject.SetActive(false);
         }
-
+    }
 
 
     void TakeDamage(int damage)
@@ -110,6 +120,29 @@ public class Player : MonoBehaviour
 
 		healthBar.SetHealth(currentHealth);
 	}
-        
-    }
+
+    
+
+
+
+//collision
+private void OnCollisionEnter2D(Collision2D collision){
+  if(collision.transform.tag=="obstacle"){
+    Debug.Log("oops!");
+    TakeDamage(5);
+  }
+else if(collision.transform.tag=="spawnPoint"){
+    //Debug.Log("wolfs are comming!");
+        enemyController.run=true;
+
+        Debug.Log(enemyController.run);
+
+    //enemyController.run=true;
+    enemyController.Start();
+  enemyController.Update();
+  }
+
 }
+
+    }
+    
