@@ -19,5 +19,10 @@ public class ProjectalBehavior : MonoBehaviour
          Destroy(gameObject,1.0f);
 
     }
-    
+    private void OnTriggerEnter2D(Collider2D other){
+        if (other.CompareTag("obstacle")) {
+            Debug.Log("hit detected");
+            Destroy(gameObject);
+        }
+    }
 }
