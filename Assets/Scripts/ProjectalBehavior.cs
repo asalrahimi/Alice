@@ -25,4 +25,5 @@ public class ProjectalBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }
