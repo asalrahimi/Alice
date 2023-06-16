@@ -10,30 +10,27 @@ int randomSpawnPoint;
 int randomEnemy;
 
 
+GameObject SpawnWolfStart;
+GameObject target;
 
-
-
-    // Start is called before the first frame update
     public void Start()
     {
-
-     InvokeRepeating("SpawnEnemy",0f,10f);
-       
+        SpawnWolfStart=GameObject.Find("SpawnWolfStart");
+        target=GameObject.Find("Player");
+        InvokeRepeating("SpawnEnemy",0f,6f);     
     }
 
-    // Update is called once per frame
     void SpawnEnemy()
     {
-        //get random spawn point
-        randomSpawnPoint=Random.Range(0,spawnPoints.Length);
-                //randomSpawnPoint=Random.Range(0,spawnPoints.Length);
+        if(target.transform.position.x<=SpawnWolfStart.transform.position.x){
+                //get random spawn point
+                randomSpawnPoint=Random.Range(0,spawnPoints.Length);
+                //get random enemy prefabs
+                randomEnemy=Random.Range(0,enemysPrefabs.Length);
+                //spawn it
+                Instantiate(enemysPrefabs[randomEnemy],spawnPoints[randomSpawnPoint].position,Quaternion.identity);
 
-        //get random enemy prefabs
-        randomEnemy=Random.Range(0,enemysPrefabs.Length);
-        //spawn it
-        Instantiate(enemysPrefabs[randomEnemy],spawnPoints[randomSpawnPoint].position,Quaternion.identity);
-
-
+        }
        
-}
+    }
 }
