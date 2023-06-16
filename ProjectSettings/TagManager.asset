@@ -9,6 +9,7 @@ TagManager:
   - hero
   - spawnPoint
   - spawn
+  - Magic
   layers:
   - Default
   - TransparentFX
