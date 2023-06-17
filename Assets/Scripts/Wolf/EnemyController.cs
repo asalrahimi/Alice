@@ -15,11 +15,10 @@ GameObject target;
 GameObject SpawnWolfStart;
 
 float moveSpeed;
-Vector3 directionToTarget;
+Vector2 directionToTarget;
 private float leftEdge;
     public void Start()
     {
-
 
     }
     public void Update()
@@ -30,13 +29,16 @@ private float leftEdge;
 
          SpawnWolfStart=GameObject.Find("SpawnWolfStart");
          target=GameObject.Find("Player");
+       
+
          rb=GetComponent<Rigidbody2D>();        
-         moveSpeed=Random.Range(1f,2f);
+
 
             if(target!=null){
                 if(target.transform.position.x<=SpawnWolfStart.transform.position.x){
-                    directionToTarget=(target.transform.position-transform.position).normalized;
-                    rb.velocity=new Vector2(directionToTarget.x*moveSpeed,directionToTarget.y*moveSpeed);
+                    directionToTarget=((target.transform.position-transform.position).normalized);
+                    rb.velocity=new Vector3(directionToTarget.x,directionToTarget.y-2,0);
+
                     transform.position +=Vector3.right*Time.deltaTime*2;
                                  }
                             }
@@ -47,4 +49,3 @@ private float leftEdge;
         
     }
 }
-
