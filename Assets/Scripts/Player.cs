@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         player = FindObjectOfType<Player>();
 
           //wolf start
-          enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
+          //enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
 
 
     }
