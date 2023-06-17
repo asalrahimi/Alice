@@ -18,8 +18,8 @@ public class SpawnManager : MonoBehaviour
 
     float _randomY;
 
-    public float[] x=new float[6];
-        public float[] y=new float[6];
+    public float[] x=new float[13];
+        public float[] y=new float[13];
 
 
 
@@ -28,10 +28,8 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-                //InvokeRepeating("Spawn",0f,4f);
-                Invoke("Spawn",6f);
+                Invoke("Spawn",7f);
 
-        // leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x + 10f;
 
     }
     
@@ -40,33 +38,37 @@ public class SpawnManager : MonoBehaviour
      
 
         {
-        //        if (transform.position.x < leftEdge) {
-        //     Destroy(gameObject);
-        // }   
+      
     }
   
 
 
     void Spawn(){
 
-            x[0]=-10.01f;
-            x[1]=-23.17f;
-            x[2]=-41.16f;
-            x[3]=-68.88f;
-           x[4]=-58.63f;
+            x[0]=-1f;
+            x[1]=-41.16f;
+            x[2]=168.36f;
+           x[3]=152.7f;
+           x[4]=18.25f;
+           x[5]=99.59f;
+           x[6]=55.01f;
 
             y[0]=-1.78f;
-            y[1]=-3.3f;
-            y[2]=0.07f;
-            y[3]=-1.93f;
-            y[4]=-0.05f;
+            y[1]=0.07f;
+            y[2]=1.3f;
+            y[3]=0.76f;
+            y[4]=-3.1f;
+            y[5]=-0.07f;
+            y[6]=-2.88f;
 
 
 
-        for(int i=0;i<5;i++){
+
+
+
+        for(int i=0;i<7;i++){
 
         int RandomObjectId=Random.Range(0,_objects.Length);
-        //Vector2 position=GetRandomCooordinate();
 
         Vector2 position=new Vector2(x[i],y[i]);
 
