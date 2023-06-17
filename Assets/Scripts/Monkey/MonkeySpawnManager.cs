@@ -6,7 +6,7 @@ public class MonkeySpawnManager : MonoBehaviour
 {
     //monkey
     [SerializeField] GameObject[] _objects;
-        [SerializeField] Camera _camera;
+    [SerializeField] Camera _camera;
     [SerializeField] int _offsetX;
 
     [SerializeField] int _offsetY;
@@ -16,64 +16,46 @@ public class MonkeySpawnManager : MonoBehaviour
     float _randomX;
 
     float _randomY;
+    public float[] x=new float[6];
+    public float[] y=new float[6];
 
-    //public float[] x=new float{-31.75f,-42.82f,-48.67f,-57.11f};
-    public float[] x=new float[2];
-        public float[] y=new float[2];
-
-    //public float[] y=new float{1.64f,2.01f,1.04f,1.22f};
 
 
  private float leftEdge;
 
-   // public float[] X { get => x; set => x = value; }
-    //public float[] X1 { get => x; set => x = value; }
 
     void Start()
     {
                 Invoke("Spawn",2f);
 
-        // leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x + 10f;
-
     }
     
-
-    // Update is called once per frame
     void Update()
-     
-
-        {
-        //        if (transform.position.x < leftEdge) {
-        //     Destroy(gameObject);
-        // }   
+     {   
     }
 
-    // Update is called once per frame
   
 
 
     void Spawn(){
 
-            x[0]=-17.91f;
-            x[1]=-65.33f;
-            //x[2]=-41.16f;
-          //  x[3]=-68.88f;
-           //x[4]=-58.63f;
-            //x[5]=-70.3f;
+        x[0]=-17.91f;
+        x[1]=-64.93f;
+        x[2]=32.19f;
+        x[3]=76.31f;
+        x[4]=114.99f;
 
-            y[0]=-0.65f;
-            y[1]=-0.45f;
-           //y[2]=0.07f;
-           // y[3]=-1.93f;
-           // y[4]=-0.05f;
-           //y[5]=-2.8f;
+        y[0]=-0.45f;
+        y[1]=0.03f;
+        y[2]=-0.23f;
+        y[3]=-0.23f;
+        y[4]=1.02f;
 
 
 
-        for(int i=0;i<2;i++){
+        for(int i=0;i<5;i++){
 
         int RandomObjectId=Random.Range(0,_objects.Length);
-        //Vector2 position=GetRandomCooordinate();
 
         Vector2 position=new Vector2(x[i],y[i]);
 
