@@ -9,8 +9,8 @@ TagManager:
   - hero
   - spawnPoint
   - spawn
-  - spawntree
-  - SpawnTree
+  - Magic
+  - SpawnWolfStart
   layers:
   - Default
   - TransparentFX

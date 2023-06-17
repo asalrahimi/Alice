@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     //Cahracter direction
     bool Right,left=true;
+
     public AudioClip Sound_jump;
     
 
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
         player = FindObjectOfType<Player>();
 
           //wolf start
-enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
+          enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
 
 
     }
@@ -56,6 +57,9 @@ enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
            transform.Translate(new Vector2(3* Time.deltaTime, 0)); //moving Player
            transform.localScale = new Vector3 (-0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
             myanim.SetBool("Run", true);
+            //character direction
+            Right=true;
+            left=false;
             
         }
 
@@ -64,6 +68,9 @@ enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
             transform.Translate(new Vector2(-3* Time.deltaTime, 0)); //moving Player
             transform.localScale = new Vector3 (0.7088f, transform.localScale.y, transform.localScale.z); //Direction of player
              myanim.SetBool("Run", true);
+             //character direction
+             left=true;
+             Right=false;
             
         }
 
@@ -87,16 +94,17 @@ enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
           myanim.Play("Jump");
           _AudioPlayer.PlayOneShot(Sound_jump);
 
-          //TakeDamage(5);
         }
+
+        
         //shooting magic
         if(Right==true){
-          if(Input.GetButtonDown("Fire1")){
+          if(Input.GetKeyDown(KeyCode.F)){
             Instantiate(projectalprefabsRight,position: launchOfset.position,rotation: transform.rotation);
           }
         }
         if(left==true){
-          if(Input.GetButtonDown("Fire1")){
+          if(Input.GetKeyDown(KeyCode.F)){
             Instantiate(projectalprefabs,position: launchOfset.position,rotation: transform.rotation);
           }
         }
