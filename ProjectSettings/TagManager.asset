@@ -10,6 +10,7 @@ TagManager:
   - spawnPoint
   - spawn
   - Magic
+  - SpawnWolfStart
   layers:
   - Default
   - TransparentFX
