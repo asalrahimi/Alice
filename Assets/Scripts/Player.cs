@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
 	public HealthBar healthBar;
 
 
-  //wolf start
-  EnemyController enemyController;
-
-
     void Start()
     {
         myRig = GetComponent <Rigidbody2D> ();
@@ -47,7 +43,7 @@ public class Player : MonoBehaviour
         player = FindObjectOfType<Player>();
 
           //wolf start
-          enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
+          //enemyController=GameObject.Find("GameSpawner").GetComponent<EnemyController>();
 
 
     }
@@ -138,16 +134,6 @@ private void OnCollisionEnter2D(Collision2D collision){
   if(collision.transform.tag=="obstacle"){
     Debug.Log("oops!");
     TakeDamage(5);
-  }
-else if(collision.transform.tag=="spawnPoint"){
-    //Debug.Log("wolfs are comming!");
-        enemyController.run=true;
-
-        Debug.Log(enemyController.run);
-
-    //enemyController.run=true;
-    enemyController.Start();
-  enemyController.Update();
   }
 
 }

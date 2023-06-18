@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4736080167063007993}
   - component: {fileID: 3839718282530260542}
   - component: {fileID: 2703184459346496066}
+  - component: {fileID: 6417531742397594867}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: obstacle
@@ -188,6 +189,18 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2703184459346496066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782151229619886152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9aaf5fd4dbcaa43a36ceabdb1474e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6417531742397594867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
