@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {      
     public GameObject PauseMenuUI;
-        int saved_scene;
+    int saved_scene;
     int scene_index;
     public static bool GameIsPaused=false;
    
@@ -37,15 +37,16 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale=1f;
         GameIsPaused=false;
     }
+
     public void Quit()
     {
        Debug.Log("quiting Game");
        Application.Quit();
     }
+
     public void MenuLoad()
     {
-       Debug.Log("Menu is loading");
-               scene_index = SceneManager.GetActiveScene().buildIndex;
+        scene_index = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("Saved",scene_index);
         PlayerPrefs.Save();
         SceneManager.LoadSceneAsync(1);
@@ -53,11 +54,12 @@ public class PauseMenu : MonoBehaviour
 
 
     }
-       public void loadSavedScene(){
-        print("its loaded");
-        saved_scene = PlayerPrefs.GetInt("Saved");
-            print("true");
-            SceneManager.LoadSceneAsync(saved_scene);
+
+    public void loadSavedScene(){
+    print("its loaded");
+    saved_scene = PlayerPrefs.GetInt("Saved");
+    print("true");
+    SceneManager.LoadSceneAsync(saved_scene);
  
     }
 }
