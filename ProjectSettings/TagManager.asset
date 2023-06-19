@@ -11,6 +11,7 @@ TagManager:
   - spawn
   - Magic
   - SpawnWolfStart
+  - SpellGlass
   layers:
   - Default
   - TransparentFX
