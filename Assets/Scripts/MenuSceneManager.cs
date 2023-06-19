@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Scene_Manager : MonoBehaviour
+public class MenuSceneManager : MonoBehaviour
 {
     int saved_scene;
     int scene_index;
