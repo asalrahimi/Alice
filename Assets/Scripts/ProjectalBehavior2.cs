@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class ProjectalBehavior2 : MonoBehaviour
 {
-        public float speed=4.5f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed=4.5f;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +15,6 @@ public class ProjectalBehavior2 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other){
         if (other.CompareTag("obstacle")) {
-            Debug.Log("hit detected");
             Destroy(gameObject);
         }
     }
