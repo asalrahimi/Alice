@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class CollusionControler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+    if (other.CompareTag("Magic")) {
+        Destroy(gameObject);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-        private void OnTriggerEnter2D(Collider2D other){
-        if (other.CompareTag("Magic")) {
-            Debug.Log("magiced");
-            Destroy(gameObject);
-        }
     }
 }
