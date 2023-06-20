@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectalBehavior : MonoBehaviour
 {
+    
     public float speed = 4.5f;
     private static int spell;
     public static int Spell {
@@ -34,6 +35,7 @@ public class ProjectalBehavior : MonoBehaviour
     void Start()
     {
         spell = 0;
+       
     }
 
     // Update is called once per frame
@@ -46,6 +48,8 @@ public class ProjectalBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if (other.CompareTag("obstacle")) {
             Destroy(gameObject);
+           
+
         }
     }
     

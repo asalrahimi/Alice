@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
         scene_index = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("Saved",scene_index);
         PlayerPrefs.Save();
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(2);
         Time.timeScale=1f;
 
 

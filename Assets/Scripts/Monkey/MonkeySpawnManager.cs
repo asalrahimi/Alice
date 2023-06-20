@@ -16,13 +16,10 @@ public class MonkeySpawnManager : MonoBehaviour
     public float[] x = new float[6];
     public float[] y = new float[6];
 
-    AudioSource _AudioPlayer;
-    public AudioClip Sound_Scream;
     private float leftEdge;
 
     void Start()
     {
-        _AudioPlayer = GetComponent<AudioSource>();
         Invoke("Spawn" , 2f);
     }
       
@@ -45,8 +42,6 @@ public class MonkeySpawnManager : MonoBehaviour
             Vector2 position=new Vector2(x[i],y[i]);
             _spawnedObject = Instantiate(_objects[RandomObjectId],position,Quaternion.identity)as GameObject;
 
-            //playing Monkey sound
-            _AudioPlayer.PlayOneShot(Sound_Scream);
         }
     } 
 }

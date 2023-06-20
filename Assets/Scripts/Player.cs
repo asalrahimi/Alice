@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Player : MonoBehaviour
   public  static float jumpforce = 7;
   public AudioClip Sound_jump;
 	public HealthBar healthBar;
-
+  public AudioClip Sound_Damage;
+  
   //magic
   public ProjectalBehavior projectalprefabs;
   public ProjectalBehavior2 projectalprefabsRight;
@@ -24,12 +26,22 @@ public class Player : MonoBehaviour
   //Cahracter direction
   bool Right,left=true;
 
+
+  public static Player Instance;
+
+  private void Awake() 
+  {
+    if (Instance == null) {
+      Instance = this;
+    }
+  }
+
   void Start()
   {
     myRig = GetComponent <Rigidbody2D> ();
     myanim = GetComponent <Animator> ();
     _AudioPlayer = GetComponent <AudioSource> ();
-    currentHealth = maxHealth;
+   currentHealth = maxHealth;
     healthBar.SetMaxHealth(maxHealth);
     player = FindObjectOfType<Player>();
   }
@@ -71,6 +83,7 @@ public class Player : MonoBehaviour
       myRig.AddForce(new Vector2(0,jumpforce),ForceMode2D.Impulse);
       myanim.Play("Jump");
       _AudioPlayer.PlayOneShot(Sound_jump);
+      
     }
       
     //shooting magic
@@ -90,7 +103,8 @@ public class Player : MonoBehaviour
     if (currentHealth == 0)
     {
       player.gameObject.SetActive(false);
-    }
+      SceneManager.LoadSceneAsync(1);
+  }
   }
 
 
@@ -98,7 +112,19 @@ public class Player : MonoBehaviour
 	{
 		currentHealth -= damage;
 		healthBar.SetHealth(currentHealth);
+    _AudioPlayer.PlayOneShot(Sound_Damage);
+
 	}
+
+  public void SetCurrentHealth(int CurrentHealth)
+  {
+    this.currentHealth = CurrentHealth;
+		healthBar.SetHealth(CurrentHealth);
+  }
+
+
+
+   
 
   //collision
   private void OnCollisionEnter2D(Collision2D collision){
@@ -108,5 +134,6 @@ public class Player : MonoBehaviour
       SpellGlass.Collect(collision);
     }
   }
+
 }
     
