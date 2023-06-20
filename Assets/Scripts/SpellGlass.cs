@@ -9,6 +9,8 @@ public class SpellGlass : MonoBehaviour
     private TextMeshProUGUI collectedSpellTxt;
     private GameObject textProObj;
 
+
+
     public void UpdateSpellCount() 
     {
         textProObj = GameObject.Find("PlayerSpellCount");

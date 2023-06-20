@@ -11,6 +11,7 @@ public class Flower : MonoBehaviour
     void Start()
     {
         myanim = GetComponent <Animator> ();
+        
  
     }
 
@@ -21,7 +22,8 @@ public class Flower : MonoBehaviour
         if (Input.GetKey(KeyCode.S))  {   
             if (((transform.position.x + 4) >= alice.transform.position.x) &&
              ((transform.position.x - 4) <= alice.transform.position.x)) {
-                myanim.SetBool("FlowerBloom", true);
+                myanim.SetBool("FlowerBloom", false);
+                Player.Instance.SetCurrentHealth(100);   
             }
         }
     }
